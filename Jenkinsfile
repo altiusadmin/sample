@@ -19,7 +19,7 @@ pipeline {
 
         stage('Test'){
             steps {
-                echo 'coming soon...'
+                echo 'coming soon..'
                 sh 'node -v'
             }
         }
