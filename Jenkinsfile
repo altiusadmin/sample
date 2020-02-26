@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'ruby:2.7'
+            args '-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
+        }
+    }
 
     options {
       buildDiscarder(logRotator(numToKeepStr: '5'))
@@ -14,14 +19,15 @@ pipeline {
 
         stage('Bundle Install'){
             steps {
-                sh 'sudo gem install bundler'
-                sh 'sudo bundle install'
+                sh 'gem install bundler'
+                sh 'bundle install'
             }
         }
 
         stage('Rake DB'){
             steps {
-                sh 'sudo rake db:create db:migrate'
+                sh 'yarn install --check-files'
+                sh 'rake db:create db:migrate'
             }
         }
 
