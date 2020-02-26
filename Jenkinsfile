@@ -19,6 +19,7 @@ pipeline {
 
         stage('Bundle Install'){
             steps {
+                sh 'gem install bundler -v 2.0.2'
                 sh 'bundle install'
             }
         }
