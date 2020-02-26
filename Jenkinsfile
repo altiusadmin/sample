@@ -17,10 +17,15 @@ pipeline {
             }
         }
 
-        stage('Test'){
+        stage('Bundle Install'){
             steps {
-                echo 'coming soon..'
-                sh 'node -v'
+                sh 'bundle install'
+            }
+        }
+
+        stage('Rake DB'){
+            steps {
+                sh 'rake db:create db:migrate'
             }
         }
 
