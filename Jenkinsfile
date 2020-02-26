@@ -17,18 +17,5 @@ pipeline {
             }
         }
 
-        stage('Bundle Install'){
-            steps {
-                sh 'gem install bundler'
-                sh 'bundle install'
-            }
-        }
-
-        stage('Rake DB'){
-            steps {
-                sh 'rake db:create db:migrate'
-            }
-        }
-
     }    
 }
