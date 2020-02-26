@@ -14,15 +14,14 @@ pipeline {
 
         stage('Bundle Install'){
             steps {
-                sh 'gem install bundler'
-                sh 'bundle install'
+                sh 'sudo gem install bundler'
+                sh 'sudo bundle install'
             }
         }
 
         stage('Rake DB'){
             steps {
-                sh 'yarn install --check-files'
-                sh 'rake db:create db:migrate'
+                sh 'sudo rake db:create db:migrate'
             }
         }
 
