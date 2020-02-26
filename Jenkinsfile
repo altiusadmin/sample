@@ -26,7 +26,6 @@ pipeline {
 
         stage('Rake DB'){
             steps {
-                sh 'yarn install --check-files'
                 sh 'rake db:create db:migrate'
             }
         }
