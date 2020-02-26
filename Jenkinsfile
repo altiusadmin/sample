@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'ruby:2.3'
+            image 'ruby:2.7'
             args '-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
         }
     }
@@ -19,7 +19,7 @@ pipeline {
 
         stage('Bundle Install'){
             steps {
-                sh 'gem install bundler -v 2.0.2'
+                sh 'gem install bundler'
                 sh 'bundle install'
             }
         }
