@@ -26,6 +26,7 @@ pipeline {
 
         stage('Rake DB'){
             steps {
+                sh 'gem install yarn'
                 sh 'rake db:create db:migrate'
             }
         }
