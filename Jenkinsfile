@@ -25,9 +25,9 @@ pipeline {
                     DATE_TAG = java.time.LocalDate.now()
                     DATETIME_TAG = java.time.LocalDateTime.now()
                 }
-                sh "echo ${JOB_NAME}"
-                sh "tar cvzf ${JOB_NAME}${DATE_TAG}.tar.gz $WORKSPACE/"
-                sh "mv $WORKSPACE/${JOB_NAME}${DATE_TAG}.tar.gz /root/code_backup/code_backup/sample/"
+                sh "echo ${JOB_BASE_NAME}"
+                sh "tar cvzf ${JOB_BASE_NAME}-${DATE_TAG}.tar.gz $WORKSPACE/"
+                sh "mv $WORKSPACE/${JOB_BASE_NAME}-${DATE_TAG}.tar.gz /root/code_backup/code_backup/sample/"
             }
         }
     }    
