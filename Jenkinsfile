@@ -21,8 +21,12 @@ pipeline {
         stage('Code Backup'){
             agent any
             steps {
-                sh "tar cvzf sample-${BUILD_TIMESTAMP}.tar.gz $WORKSPACE/"
-                sh "mv sample-${BUILD_TIMESTAMP}.tar.gz /home/ubuntu/code_backup/sample/"
+                script {
+                    DATE_TAG = java.time.LocalDate.now()
+                    DATETIME_TAG = java.time.LocalDateTime.now()
+                }
+                sh "tar cvzf sample-${DATETIME_TAG}.tar.gz $WORKSPACE/"
+                sh "mv sample-${DATETIME_TAG}.tar.gz /home/ubuntu/code_backup/sample/"
             }
         }
     }    
