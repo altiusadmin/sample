@@ -21,8 +21,8 @@ pipeline {
         stage('Code Backup'){
             agent any
             steps {
-                sh 'tar cvzf sample-$BUILD_TIMESTAMP.tar.gz $WORKSPACE/'
-                sh 'mv sample-$BUILD_TIMESTAMP.tar.gz /home/ubuntu/code_backup/sample/'
+                sh "tar cvzf sample-${BUILD_TIMESTAMP}.tar.gz $WORKSPACE/"
+                sh "mv sample-${BUILD_TIMESTAMP}.tar.gz /home/ubuntu/code_backup/sample/"
             }
         }
     }    
