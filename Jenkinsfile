@@ -19,7 +19,7 @@ pipeline {
 
         stage('Code Backup'){
             steps {
-                sh 'echo hello'
+                sh 'ansible-playbook backup.yml'
             }
         }
     }    
