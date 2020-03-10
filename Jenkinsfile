@@ -1,16 +1,17 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:2.7'
-            args '-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker -v /usr/bin/ansible-playbook:/usr/bin/ansible-playbook -v /usr/bin/ansible:/usr/bin/ansible'
-        }
-    }
+    agent none
 
     options {
       buildDiscarder(logRotator(numToKeepStr: '5'))
     }    
 
     stages {
+        agent {
+                docker {
+                    image 'ruby:2.7'
+                    args '-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
+                }
+            }
         stage('Checkout'){
             steps {
                 checkout scm
@@ -18,9 +19,10 @@ pipeline {
         }
 
         stage('Code Backup'){
+            agent any
             steps {
-                sh 'pip install ansible'
-                sh 'ansible-playbook backup.yml'
+                sh 'name=$(date '+%Y-%m-%d')'
+                sh 'tar cvzf sample-$name.tar.gz $WORKSPACE/'
             }
         }
     }    
