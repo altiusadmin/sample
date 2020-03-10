@@ -21,7 +21,7 @@ pipeline {
         stage('Code Backup'){
             agent any
             steps {
-                sh 'name=$(date '+%Y-%m-%d')'
+                sh "name=$(date '+%Y-%m-%d')"
                 sh 'tar cvzf sample-$name.tar.gz $WORKSPACE/'
             }
         }
