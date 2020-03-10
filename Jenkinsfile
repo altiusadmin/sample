@@ -22,8 +22,7 @@ pipeline {
             agent any
             steps {
                 script {
-                    DATE_TAG = java.time.LocalDate.now()
-                    DATETIME_TAG = java.time.LocalDateTime.now()
+                    DATETIME_TAG=$(date '+%Y-%m-%d')
                 }
                 sh 'tar cvzf sample-${DATETIME_TAG}.tar.gz $WORKSPACE/'
                 sh 'mv sample-${DATETIME_TAG}.tar.gz /home/ubuntu/code_backup/sample/'
