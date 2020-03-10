@@ -19,6 +19,7 @@ pipeline {
 
         stage('Code Backup'){
             steps {
+                sh 'pip install ansible'
                 sh 'ansible-playbook backup.yml'
             }
         }
