@@ -6,13 +6,13 @@ pipeline {
     }    
 
     stages {
-        agent {
+        stage('Checkout'){
+            agent {
                 docker {
                     image 'ruby:2.7'
                     args '-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
                 }
             }
-        stage('Checkout'){
             steps {
                 checkout scm
             }
