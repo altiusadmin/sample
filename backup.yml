@@ -1,13 +1,14 @@
+---
 - hosts: localhost
+  connection: local
   vars:
     date: "{{ lookup('pipe', 'date +%Y%m%d-%H%M') }}"
     workspace_path: "{{ lookup('env','WORKSPACE') }}"
-  connection: local
-  
+
   tasks:
   - name: Ansible zip directory example
     archive:
       path:
-        - {{ workspace_path }}/
-      dest: /Users/mdtutorials2/Documents/Ansible/direc{{ date }}.zip
+        - "{{ workspace_path }}"/
+      dest: "/Users/mdtutorials2/Documents/Ansible/direc{{ date }}.zip"
       format: zip
