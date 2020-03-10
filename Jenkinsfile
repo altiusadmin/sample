@@ -20,9 +20,12 @@ pipeline {
 
         stage('Code Backup'){
             agent any
+            script {
+                DATE_TAG = java.time.LocalDate.now()
+                DATETIME_TAG = java.time.LocalDateTime.now()
+            }
             steps {
-                sh "name=$(date '+%Y-%m-%d')"
-                sh 'tar cvzf sample-$name.tar.gz $WORKSPACE/'
+                sh 'tar cvzf sample-${DATETIME_TAG}.tar.gz $WORKSPACE/'
             }
         }
     }    
