@@ -3,6 +3,7 @@
     date: "{{ lookup('pipe', 'date +%Y%m%d-%H%M') }}"
     workspace_path: "{{ lookup('env','WORKSPACE') }}"
   connection: local
+  
   tasks:
   - name: Ansible zip directory example
     archive:
